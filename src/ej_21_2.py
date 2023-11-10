@@ -1,15 +1,15 @@
 
-def testPass(password):
+def testPass(contra):
     passOrig = "contraseña"
-    if password.replace(" ", "").lower() == passOrig:
-        return True
+    if contra.replace(" ", "").lower() == passOrig:
+        return "1"
     else:
-        return False
+        return "2"
 
 
 def main():
-    password = input("Introduzca una contraseña: ")
-    if testPass(password) == True:
+    contra = input("Introduzca una contraseña: ")
+    if testPass(contra) == "1":
         print("Has acertado la contraseña")
     else:
         print("Siga jugando")

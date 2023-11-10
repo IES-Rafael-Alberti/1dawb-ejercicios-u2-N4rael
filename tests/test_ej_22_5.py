@@ -1,7 +1,15 @@
+import pytest
 from src.ej_22_5 import calcularInversion
-def test_calcularInversion():
-    assert calcularInversion(1000, 5, 3) == 1157.625
-    assert calcularInversion(5000, 2.5, 10) == 6410.660536815282
-    assert calcularInversion(2000, 10, 5) == 3220.0
+
+@pytest.mark.parametrize(
+        "input1, input2, input3, expected",
+        [
+            (20000, 2.5, 5, [(1, 20500.0), (2, 21012.499999999996), (3, 21537.812499999993), (4, 22076.25781249999), (5, 22628.16425781249)]),
+            (350000, 10, 7, [(1, 385000.00000000006), (2, 423500.0000000001), (3, 465850.0000000002), (4, 512435.00000000023), (5, 563678.5000000003), (6, 620046.3500000004), (7, 682050.9850000006)]),
+            (15000, 0.5, 4, [(1, 15074.999999999998), (2, 15150.374999999996), (3, 15226.126874999994), (4, 15302.257509374993)])
+        ]
+)
+def test_calcularInversion(input1, input2, input3, expected):
+    assert calcularInversion(input1, input2, input3) == expected
 
 

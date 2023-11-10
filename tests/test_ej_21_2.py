@@ -1,12 +1,17 @@
 import pytest
 from src.ej_21_2 import testPass
 
-def test_testPass():
-    assert testPass("contraseña") == True
-    assert testPass("CoNtrASeñA") == True
-    assert testPass("contrAseña") == True
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        ("contraseña", "1"),
+        ("CoNtrASeñA", "1"),
+        ("contrAseña", "1"),
+        ("1234", "2"),
+        ("thecakeisalie", "2"),
+        ("coca cola", "2")
+    ]
+)
 
-def test_testPassNO():
-    assert testPass("thecakeisalie") == False
-    assert testPass("1234") == False
-    assert testPass("coca cola") == False
+def test_testPass(input, expected):
+    assert testPass(input) == expected
